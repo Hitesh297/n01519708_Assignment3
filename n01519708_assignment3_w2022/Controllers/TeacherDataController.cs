@@ -17,6 +17,7 @@ namespace n01519708_assignment3_w2022.Controllers
         /// This method gets all teachers data
         /// </summary>
         /// <returns>Returns list of all teachers</returns>
+        /// Example : /api/TeacherData/listteachers
         [HttpGet]
         public List<Teacher> ListTeachers()
         {
@@ -54,6 +55,7 @@ namespace n01519708_assignment3_w2022.Controllers
         /// </summary>
         /// <param name="id">teacher id</param>
         /// <returns>Returns Teacher details</returns>
+        /// Example: /api/TeacherData/getteacher/1
         [HttpGet]
         public Teacher GetTeacher(int id)
         {

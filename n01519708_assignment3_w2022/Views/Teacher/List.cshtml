@@ -1,0 +1,16 @@
+﻿@model List<n01519708_assignment3_w2022.Models.Teacher>
+
+@{
+    ViewBag.Title = "List";
+}
+
+<div id="teacherListContainer">
+    <h3>List of Teachers</h3>
+    <ul class="list-group">
+        @foreach (n01519708_assignment3_w2022.Models.Teacher teacher in Model)
+        {
+            <li class="list-group-item list-group-item-action"><a href="/Teacher/show/@teacher.TeacherId">@teacher.FirstName @teacher.LastName</a></li>
+        }
+    </ul>
+</div>
+

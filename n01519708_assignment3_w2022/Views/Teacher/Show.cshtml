@@ -1,0 +1,32 @@
+﻿@model n01519708_assignment3_w2022.Models.Teacher
+@{
+    ViewBag.Title = "Show";
+}
+
+<h2>Show</h2>
+
+<a href="/Teacher/List">Back to Teacher's List</a>
+
+<div id="teacherDetails" class="teacherDetails">
+    <div id="teacherName">
+        <h2>@Model.FirstName @Model.LastName</h2>
+        <hr />
+    </div>
+    
+    <p>Employee Number: <strong>@Model.EmployeeNumber</strong></p>
+    <p>Hire Date: <strong>@Model.HireDate.ToShortDateString()</strong></p>
+    <p>Salary: <strong>@Model.Salary</strong></p>
+
+    <div id="classDetails">
+        <div id="classTitle" >Class Details</div>
+        <div id="classContent">
+            <h3>@Model.Subject.ClassName</h3>
+            <p>Class Code: <strong>@Model.Subject.ClassCode</strong></p>
+            <p>Start Date: <strong>@Model.Subject.StartDate.ToShortDateString()</strong></p>
+            <p>Finish Date: <strong>@Model.Subject.FinishDate.ToShortDateString()</strong></p>
+        </div>
+    </div>
+</div>
+
+
+

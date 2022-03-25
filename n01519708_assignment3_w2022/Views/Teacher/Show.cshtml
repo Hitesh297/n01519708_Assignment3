@@ -20,10 +20,18 @@
     <div id="classDetails">
         <div id="classTitle" >Class Details</div>
         <div id="classContent">
-            <h3>@Model.Subject.ClassName</h3>
-            <p>Class Code: <strong>@Model.Subject.ClassCode</strong></p>
-            <p>Start Date: <strong>@Model.Subject.StartDate.ToShortDateString()</strong></p>
-            <p>Finish Date: <strong>@Model.Subject.FinishDate.ToShortDateString()</strong></p>
+            @if (Model.Subject != null)
+            {
+                <h3>@Model.Subject.ClassName</h3>
+                <p>Class Code: <strong>@Model.Subject.ClassCode</strong></p>
+                <p>Start Date: <strong>@Model.Subject.StartDate.ToShortDateString()</strong></p>
+                <p>Finish Date: <strong>@Model.Subject.FinishDate.ToShortDateString()</strong></p>
+            } 
+            else
+            {
+                <p>Class details not Available!</p>
+            }
+
         </div>
     </div>
 </div>

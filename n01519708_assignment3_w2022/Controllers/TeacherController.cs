@@ -10,10 +10,10 @@ namespace n01519708_assignment3_w2022.Controllers
     public class TeacherController : Controller
     {
         // GET: Teacher/List
-        public ActionResult List()
+        public ActionResult List(string searchText=null)
         {
             TeacherDataController teacherDataController = new TeacherDataController();
-            List<Teacher> teachers = teacherDataController.ListTeachers();
+            List<Teacher> teachers = teacherDataController.ListTeachers(searchText);
             return View(teachers);
         }
 

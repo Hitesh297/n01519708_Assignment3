@@ -5,6 +5,10 @@
 }
 
 <div id="teacherListContainer">
+    <form action="/Teacher/List" method="GET">
+        <input type="text" name="searchText" autocomplete="off" />
+        <input type="submit" value="Search" />
+    </form>
     <h3>List of Teachers</h3>
     <ul class="list-group">
         @foreach (n01519708_assignment3_w2022.Models.Teacher teacher in Model)

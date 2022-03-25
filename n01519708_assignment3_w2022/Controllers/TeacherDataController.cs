@@ -14,10 +14,12 @@ namespace n01519708_assignment3_w2022.Controllers
         private SchoolDbContext schoolDbContext = new SchoolDbContext();
 
         /// <summary>
-        /// This method gets all teachers data
+        /// Returns a list of Teachers
         /// </summary>
-        /// <returns>Returns list of all teachers</returns>
+        /// <param name="searchText">takes in search text (optional)</param>
+        /// <returns>A list of Teacher objects</returns>
         /// Example : /api/TeacherData/listteachers
+        /// Example : /api/TeacherData/listteachers/alex
         [HttpGet]
         [Route("api/TeacherData/ListTeachers/{searchText?}")]
         public List<Teacher> ListTeachers(string searchText = null)

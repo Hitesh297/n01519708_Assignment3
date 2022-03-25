@@ -10,6 +10,7 @@ namespace n01519708_assignment3_w2022.Controllers
     public class TeacherController : Controller
     {
         // GET: Teacher/List
+        // GET: Teacher/List?searchText=alex
         public ActionResult List(string searchText=null)
         {
             TeacherDataController teacherDataController = new TeacherDataController();

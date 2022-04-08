@@ -4,10 +4,16 @@
     ViewBag.Title = "List";
 }
 
+<nav>
+    <a class="navlink" href="/Teacher/New">New Teacher</a>
+</nav>
+
 <div id="teacherListContainer">
-    <form action="/Teacher/List" method="GET">
-        <input type="text" name="searchText" autocomplete="off" />
-        <input type="submit" value="Search" />
+    <form class="form-inline" action="/Teacher/List" method="GET">
+        <div class="form-group">
+            <input type="text" class="form-control" name="searchText" autocomplete="off" />
+        </div>
+        <button type="submit" class="btn btn-primary">Search</button>
     </form>
     <h3>List of Teachers</h3>
     <ul class="list-group">

@@ -98,5 +98,66 @@ namespace n01519708_assignment3_w2022.Controllers
 
             return teacherDetails;
         }
+
+        /// <summary>
+        /// Deletes an Teacher from the connected MySQL Database if the ID of that author exists
+        /// </summary>
+        /// <param name="id">The ID of the teacher.</param>
+        /// <example>POST /api/TeacherData/DeleteTeacher/30</example>
+        [HttpPost]
+        public void DeleteTeacher(int id)
+        {
+ 
+            MySqlConnection Conn = schoolDbContext.AccessDatabase();
+            Conn.Open();
+
+            MySqlCommand cmd = Conn.CreateCommand();
+
+            cmd.CommandText = "Delete from teachers where teacherid=@id";
+            cmd.Parameters.AddWithValue("@id", id);
+            cmd.Prepare();
+
+            cmd.ExecuteNonQuery();
+            Conn.Close();
+
+        }
+
+
+        /// <summary>
+        /// Adds a Teacher to the MySQL Database.
+        /// </summary>
+        /// <param name="NewTeacher">An object of type Teacher that map to the columns of the Teachers table.</param>
+        /// <example>
+        /// POST api/TeacherData/AddTeacher 
+        /// FORM DATA / POST DATA / REQUEST BODY 
+        /// {
+        ///	"FirstName":"Hitesh",
+        ///	"LastName":"Patel",
+        ///	"EmployeeNumber":"E12345",
+        ///	"Salary":"45.66"
+        /// }
+        /// </example>
+        [HttpPost]
+        public void AddTeacher([FromBody] Teacher NewTeacher)
+        {
+      
+            MySqlConnection Conn = schoolDbContext.AccessDatabase();
+
+            Conn.Open();
+
+            MySqlCommand cmd = Conn.CreateCommand();
+
+            cmd.CommandText = "insert into teachers (teacherfname, teacherlname, employeenumber, hiredate, salary) values (@TeacherFname,@TeacherLname,@EmployeeNumber, CURRENT_DATE(), @Salary)";
+            cmd.Parameters.AddWithValue("@TeacherFname", NewTeacher.FirstName);
+            cmd.Parameters.AddWithValue("@TeacherLname", NewTeacher.LastName);
+            cmd.Parameters.AddWithValue("@EmployeeNumber", NewTeacher.EmployeeNumber);
+            cmd.Parameters.AddWithValue("@Salary", NewTeacher.Salary);
+            cmd.Prepare();
+
+            cmd.ExecuteNonQuery();
+
+            Conn.Close();
+
+        }
     }
 }

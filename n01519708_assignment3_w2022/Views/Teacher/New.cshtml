@@ -1,0 +1,63 @@
+﻿@model n01519708_assignment3_w2022.Models.Teacher
+@{
+    ViewBag.Title = "New";
+}
+
+<style>
+    .error {
+        color: red;
+    }
+</style>
+
+<nav>
+    <a class="navlink" href="/Teacher/List">Back To Teachers</a>
+</nav>
+<h2>New Teacher</h2>
+@using (Html.BeginForm("Create", "Teacher", FormMethod.Post))
+{
+
+
+<div class="form-group">
+    @Html.LabelFor(model => model.FirstName)
+    @Html.TextBoxFor(Model => Model.FirstName, new { @class = "form-control" })
+    @if (!ViewData.ModelState.IsValid)
+    {
+        foreach (var item in ViewData.ModelState["FirstName"].Errors)
+        {
+            <div>
+                <span class="error">@item.ErrorMessage</span>
+            </div>
+        }
+
+    }
+
+</div>
+
+<div class="form-group">
+    @Html.LabelFor(model => model.LastName)
+    @Html.TextBoxFor(Model => Model.LastName, new { @class = "form-control" })
+    @if (!ViewData.ModelState.IsValid)
+    {
+        foreach (var item in ViewData.ModelState["LastName"].Errors)
+        {
+            <div>
+                <span class="error">@item.ErrorMessage</span>
+            </div>
+        }
+    }
+
+</div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.EmployeeNumber)
+        @Html.TextBoxFor(Model => Model.EmployeeNumber, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.Salary)
+        @Html.TextBoxFor(Model => Model.Salary, new { @class = "form-control" })
+        @Html.ValidationMessageFor(x=>x.Salary,"", new {@class = "error"})
+    </div>
+
+    <button type="submit" class="btn btn-primary">Create Teacher</button>
+
+}
+

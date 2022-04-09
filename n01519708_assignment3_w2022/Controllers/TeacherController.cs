@@ -72,7 +72,7 @@ namespace n01519708_assignment3_w2022.Controllers
                 isStateValid = false;
             }
 
-            if (isStateValid)
+            if (isStateValid && ModelState.IsValid)
             {
                 TeacherDataController teacherDataController = new TeacherDataController();
                 teacherDataController.AddTeacher(model);

@@ -87,6 +87,11 @@ namespace n01519708_assignment3_w2022.Controllers
             
         }
 
+        /// <summary>
+        /// Displays form to update Teacher details
+        /// </summary>
+        /// <param name="id">Teacher Id</param>
+        /// <returns>Update page with prefilled existing values</returns>
         public ActionResult Update(int id)
         {
             TeacherDataController controller = new TeacherDataController();
@@ -95,6 +100,12 @@ namespace n01519708_assignment3_w2022.Controllers
             return View(selectedTeacher);
         }
 
+
+        /// <summary>
+        /// Updates Teacher details using AJAX
+        /// </summary>
+        /// <param name="id">Teacher Id</param>
+        /// <returns>Update page with prefilled existing values</returns>
         public ActionResult AjaxUpdate(int id)
         {
             TeacherDataController controller = new TeacherDataController();
@@ -102,6 +113,12 @@ namespace n01519708_assignment3_w2022.Controllers
             return View(selectedTeacher);
         }
 
+
+        /// <summary>
+        /// Updates the Teader data and redirects to show if update successful
+        /// </summary>
+        /// <param name="model">form data as teacher object from view</param>
+        /// <returns>redirects to show page</returns>
         [HttpPost]
         public ActionResult Update(Teacher model)
         {

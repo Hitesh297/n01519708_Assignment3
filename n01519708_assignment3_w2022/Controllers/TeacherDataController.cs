@@ -161,19 +161,28 @@ namespace n01519708_assignment3_w2022.Controllers
         }
 
 
+        /// <summary>
+        /// Updates the teacher details based on the teacherid
+        /// </summary>
+        /// <param name="TeacherInfo">An object of type Teacher that map to the columns of the Teachers table.</param>
+        /// /// <example>
+        /// POST api/TeacherData/UpdateTeacher 
+        /// FORM DATA / POST DATA / REQUEST BODY 
+        /// {
+        /// "TeacherId":14,
+        ///	"FirstName":"Hitesh",
+        ///	"LastName":"Patel",
+        ///	"EmployeeNumber":"E12345",
+        ///	"Salary":"45.66"
+        /// }
+        /// </example>
         [HttpPost]
         public void UpdateTeacher([FromBody]Teacher TeacherInfo)
         {
-            //Create an instance of a connection
             MySqlConnection Conn = schoolDbContext.AccessDatabase();
-
-            //Open the connection between the web server and database
             Conn.Open();
-
-            //Establish a new command (query) for our database
             MySqlCommand cmd = Conn.CreateCommand();
 
-            //SQL QUERY
             cmd.CommandText = "update teachers set teacherfname=@TeacherFname, teacherlname=@TeacherLname, employeenumber=@EmployeeNumber, salary=@Salary  where teacherid=@TeacherId";
             cmd.Parameters.AddWithValue("@TeacherFname", TeacherInfo.FirstName);
             cmd.Parameters.AddWithValue("@TeacherLname", TeacherInfo.LastName);

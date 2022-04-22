@@ -10,6 +10,7 @@
 	var TeacherSalary = document.getElementById('Salary').value;
 	var TeacherId = document.getElementById('TeacherId').value;
 
+	//validate if first name is empty
 	var fnameError = document.getElementById('fnameError');
 	if (TeacherFname === null || TeacherFname === "") {
 		fnameError.style.display = 'block';
@@ -18,6 +19,7 @@
 		fnameError.style.display = 'none';
     }
 
+	//validate is last name is empty
 	var lnameError = document.getElementById('lnameError');
 	if (TeacherLname === null || TeacherLname === "") {
 		lnameError.style.display = 'block';
@@ -26,6 +28,7 @@
 		lnameError.style.display = 'none';
     }
 
+	//validate if salary is empty
 	var salaryError = document.getElementById('salaryError');
 	if (TeacherSalary === null || TeacherSalary === "") {
 		salaryError.style.display = 'block';

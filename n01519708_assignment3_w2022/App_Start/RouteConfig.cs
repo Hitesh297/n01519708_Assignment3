@@ -16,7 +16,7 @@ namespace n01519708_assignment3_w2022
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
+                defaults: new { controller = "Teacher", action = "List", id = UrlParameter.Optional }
             );
         }
     }

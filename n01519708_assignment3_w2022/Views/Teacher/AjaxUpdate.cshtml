@@ -1,0 +1,51 @@
+﻿@model n01519708_assignment3_w2022.Models.Teacher
+@{
+    ViewBag.Title = "AjaxUpdate";
+}
+<style>
+    .error {
+        color: red;
+        display:none;
+    }
+</style>
+<h2>AjaxUpdate</h2>
+
+
+
+
+    <div>
+        @Html.HiddenFor(m => m.TeacherId)
+        @Html.LabelFor(model => model.FirstName)
+        @Html.TextBoxFor(Model => Model.FirstName, new { @class = "form-control" })
+        <div>
+            <span id="fnameError" class="error">First Name cannot be empty.</span>
+        </div>
+
+    </div>
+
+    <div>
+        @Html.LabelFor(model => model.LastName)
+        @Html.TextBoxFor(Model => Model.LastName, new { @class = "form-control" })
+        <span id="lnameError" class="error">Last Name cannot be empty.</span>
+
+    </div>
+    <div>
+        @Html.LabelFor(model => model.EmployeeNumber)
+        @Html.TextBoxFor(Model => Model.EmployeeNumber, new { @class = "form-control" })
+    </div>
+    <div>
+        @Html.LabelFor(model => model.Salary)
+        @Html.TextBoxFor(Model => Model.Salary, new { @class = "form-control" })
+        <span id="salaryError" class="error">Salary cannot be empty.</span>
+    </div>
+    <br />
+    <div>
+        <button  onclick="UpdateTeacher();" class="btn btn-primary">Update Teacher</button>
+    </div>
+
+    <div id="successmsg" style="display:none" >
+        <h4>Update Successful!</h4>
+    </div>
+
+
+

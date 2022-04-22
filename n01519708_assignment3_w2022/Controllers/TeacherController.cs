@@ -86,5 +86,52 @@ namespace n01519708_assignment3_w2022.Controllers
 
             
         }
+
+        public ActionResult Update(int id)
+        {
+            TeacherDataController controller = new TeacherDataController();
+            Teacher selectedTeacher = controller.GetTeacher(id);
+
+            return View(selectedTeacher);
+        }
+
+        public ActionResult AjaxUpdate(int id)
+        {
+            TeacherDataController controller = new TeacherDataController();
+            Teacher selectedTeacher = controller.GetTeacher(id);
+            return View(selectedTeacher);
+        }
+
+        [HttpPost]
+        public ActionResult Update(Teacher model)
+        {
+            bool isStateValid = true;
+            if (string.IsNullOrEmpty(model.FirstName))
+            {
+                /*Manual add error to model state*/
+                ModelState.AddModelError("FirstName", "First Name is required");
+                isStateValid = false;
+            }
+
+            if (string.IsNullOrEmpty(model.LastName))
+            {
+                /*Manual add error to model state*/
+                ModelState.AddModelError("LastName", "Last Name is required");
+                isStateValid = false;
+            }
+
+            if (isStateValid && ModelState.IsValid)
+            {
+                TeacherDataController teacherDataController = new TeacherDataController();
+                teacherDataController.UpdateTeacher(model);
+
+                return RedirectToAction("Show/" + model.TeacherId);
+            }
+            else
+            {
+                return View("Update", model);
+            }
+
+        }
     }
 }

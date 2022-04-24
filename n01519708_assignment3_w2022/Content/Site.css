@@ -16,12 +16,11 @@ textarea {
     max-width: 280px;
 }
 
-.teacherDetails {
+.teacherDetails, .studentDetails, .courseDetails {
     border-radius: 5px;
     background-color: #252525;
     color: white;
     padding: 30px;
-    width: 600px;
     margin: 20px 0px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
@@ -32,15 +31,15 @@ textarea {
     margin-top: 30px;
 }
 
-.teacherDetails h2 {
+.teacherDetails h2, .studentDetails h2 {
     margin-top: 0px;
 }
 
-.teacherDetails p:nth-child(1) {
-    display:inline-block;
+.teacherDetails p:nth-child(1), .studentDetails p:nth-child(1) {
+    display: inline-block;
 }
 
-.teacherDetails > p:nth-child(2) {
+.teacherDetails > p:nth-child(2), .studentDetails > p:nth-child(2) {
     display: inline-block;
     float: right;
 }

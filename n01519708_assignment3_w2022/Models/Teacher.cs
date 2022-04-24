@@ -19,6 +19,6 @@ namespace n01519708_assignment3_w2022.Models
         public DateTime HireDate { get; set; }
         [DisplayName("Salary")]
         public decimal Salary { get; set; }
-        public Subject Subject { get; set; }
+        public List<Subject> Subjects { get; set; }
     }
 }

@@ -234,7 +234,11 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\SampleDirection.cs" />
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
+    <Compile Include="Controllers\CourseController.cs" />
+    <Compile Include="Controllers\CourseDataController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\StudentController.cs" />
+    <Compile Include="Controllers\StudentDataController.cs" />
     <Compile Include="Controllers\TeacherController.cs" />
     <Compile Include="Controllers\TeacherDataController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
@@ -242,6 +246,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\SchoolDbContext.cs" />
+    <Compile Include="Models\Student.cs" />
     <Compile Include="Models\Subject.cs" />
     <Compile Include="Models\Teacher.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -341,6 +346,10 @@
     <Content Include="Views\Teacher\New.cshtml" />
     <Content Include="Views\Teacher\Update.cshtml" />
     <Content Include="Views\Teacher\AjaxUpdate.cshtml" />
+    <Content Include="Views\Student\List.cshtml" />
+    <Content Include="Views\Student\Show.cshtml" />
+    <Content Include="Views\Course\List.cshtml" />
+    <Content Include="Views\Course\Show.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

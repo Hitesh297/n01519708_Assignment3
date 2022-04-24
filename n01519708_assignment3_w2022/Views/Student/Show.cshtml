@@ -1,0 +1,33 @@
+﻿@model n01519708_assignment3_w2022.Models.Student
+@{
+    ViewBag.Title = "Show";
+}
+<style>
+    #navlinks li {
+        display: inline;
+        margin-right: 20px;
+    }
+
+    #navlinks {
+        padding: 0;
+    }
+</style>
+<nav>
+    <ul id="navlinks" style="list-style:none; display:inline;">
+        <li><a href="/Student/List">Back to Student's List</a></li>
+    </ul>
+</nav>
+
+<div id="studentDetails" class="studentDetails">
+    <div id="studentName">
+        <h2>@Model.StudentFname @Model.StudentLname</h2>
+        <hr />
+    </div>
+
+    <p>Student Number: <strong>@Model.StudentNumber</strong></p>
+    <p>Enrol Date: <strong>@Model.EnrolDate.ToShortDateString()</strong></p>
+
+</div>
+
+
+

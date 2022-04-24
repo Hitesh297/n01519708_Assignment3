@@ -33,13 +33,18 @@
     <div id="classDetails">
         <div id="classTitle" >Class Details</div>
         <div id="classContent">
-            @if (Model.Subject != null)
+            @if (Model.Subjects.Count != 0)
             {
-                <h3>@Model.Subject.ClassName</h3>
-                <p>Class Code: <strong>@Model.Subject.ClassCode</strong></p>
-                <p>Start Date: <strong>@Model.Subject.StartDate.ToShortDateString()</strong></p>
-                <p>Finish Date: <strong>@Model.Subject.FinishDate.ToShortDateString()</strong></p>
-            } 
+                foreach (var item in Model.Subjects)
+                {
+            <div style="background-color:#373636; padding:10px; display:inline-block; margin:10px; border-radius:10px;">
+                <h3>@item.ClassName</h3>
+                <p>Class Code: <strong>@item.ClassCode</strong></p>
+                <p>Start Date: <strong>@item.StartDate.ToShortDateString()</strong></p>
+                <p>Finish Date: <strong>@item.FinishDate.ToShortDateString()</strong></p>
+            </div>
+                }
+            }
             else
             {
                 <p>Class details not Available!</p>

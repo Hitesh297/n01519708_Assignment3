@@ -1,0 +1,23 @@
+﻿@model List<n01519708_assignment3_w2022.Models.Subject>
+
+@{
+    ViewBag.Title = "List";
+}
+
+
+<div id="courseListContainer">
+    <form style="margin-bottom:20px;" class="form-inline" action="/Course/List" method="GET">
+        <div class="form-group">
+            <input type="text" class="form-control" name="searchText" autocomplete="off" />
+        </div>
+        <button type="submit" class="btn btn-primary">Search</button>
+    </form>
+    <h3>List of Classes</h3>
+    <ul class="list-group">
+        @foreach (n01519708_assignment3_w2022.Models.Subject subject in Model)
+        {
+            <li class="list-group-item list-group-item-action"><a href="/Course/show/@subject.ClassId">@subject.ClassName</a></li>
+        }
+    </ul>
+</div>
+

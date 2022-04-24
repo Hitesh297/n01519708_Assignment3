@@ -13,6 +13,7 @@ namespace n01519708_assignment3_w2022.Models
         public DateTime FinishDate { get; set; }
         public DateTime StartDate { get; set; }
         public int TeacherId { get; set; }
+        public string TeacherName { get; set; }
 
     }
 }

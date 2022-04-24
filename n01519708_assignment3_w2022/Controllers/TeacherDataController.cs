@@ -24,7 +24,7 @@ namespace n01519708_assignment3_w2022.Controllers
         [Route("api/TeacherData/ListTeachers/{searchText?}")]
         public List<Teacher> ListTeachers(string searchText = null)
         {
-            
+
             MySqlConnection connection = schoolDbContext.AccessDatabase();
 
             connection.Open();
@@ -68,10 +68,9 @@ namespace n01519708_assignment3_w2022.Controllers
             connection.Open();
 
             MySqlCommand command = connection.CreateCommand();
-            command.CommandText = "SELECT * FROM teachers AS t LEFT JOIN classes AS c ON t.teacherid = c.teacherid WHERE t.teacherid = " + id;
+            command.CommandText = "SELECT * FROM teachers WHERE teacherid = " + id;
 
             MySqlDataReader result = command.ExecuteReader();
-
             Teacher teacherDetails = new Teacher();
 
             while (result.Read())
@@ -82,18 +81,26 @@ namespace n01519708_assignment3_w2022.Controllers
                 teacherDetails.EmployeeNumber = result["employeenumber"].ToString();
                 teacherDetails.HireDate = Convert.ToDateTime(result["hiredate"]);
                 teacherDetails.Salary = Convert.ToDecimal(result["salary"]);
+            }
 
-                if (!Convert.IsDBNull(result["classcode"]))
+            result.Close();
+
+            MySqlCommand getSubjectscommand = connection.CreateCommand();
+            getSubjectscommand.CommandText = "SELECT * FROM classes WHERE teacherid = " + id;
+
+            MySqlDataReader subjectsresult = getSubjectscommand.ExecuteReader();
+            teacherDetails.Subjects = new List<Subject>();
+            while (subjectsresult.Read())
+            {
+                Subject subject = new Subject()
                 {
-                    teacherDetails.Subject = new Subject()
-                    {
-                        ClassCode = result["classcode"].ToString(),
-                        ClassId = Convert.ToInt32(result["classid"]),
-                        ClassName = result["classname"].ToString(),
-                        FinishDate = Convert.ToDateTime(result["finishdate"]),
-                        StartDate = Convert.ToDateTime(result["startdate"])
-                    };
-                }
+                    ClassCode = subjectsresult["classcode"].ToString(),
+                    ClassId = Convert.ToInt32(subjectsresult["classid"]),
+                    ClassName = subjectsresult["classname"].ToString(),
+                    FinishDate = Convert.ToDateTime(subjectsresult["finishdate"]),
+                    StartDate = Convert.ToDateTime(subjectsresult["startdate"])
+                };
+                teacherDetails.Subjects.Add(subject);
             }
 
             return teacherDetails;
@@ -107,7 +114,7 @@ namespace n01519708_assignment3_w2022.Controllers
         [HttpPost]
         public void DeleteTeacher(int id)
         {
- 
+
             MySqlConnection Conn = schoolDbContext.AccessDatabase();
             Conn.Open();
 
@@ -140,7 +147,7 @@ namespace n01519708_assignment3_w2022.Controllers
         [HttpPost]
         public void AddTeacher([FromBody] Teacher NewTeacher)
         {
-      
+
             MySqlConnection Conn = schoolDbContext.AccessDatabase();
 
             Conn.Open();
@@ -177,7 +184,7 @@ namespace n01519708_assignment3_w2022.Controllers
         /// }
         /// </example>
         [HttpPost]
-        public void UpdateTeacher([FromBody]Teacher TeacherInfo)
+        public void UpdateTeacher([FromBody] Teacher TeacherInfo)
         {
             MySqlConnection Conn = schoolDbContext.AccessDatabase();
             Conn.Open();
